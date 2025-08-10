@@ -1,0 +1,76 @@
+/* 
+ * ESTILOS PARA STREAM ARCHIVE - Gondra Live Streaming
+ * 
+ * Estructura:
+ * 1. Estilos base (mobile-first)
+ * 2. Grid de streams
+ * 3. Título de sección
+ * 4. Media queries (tablet/desktop)
+ */
+
+/* ==================== 1. ESTRUCTURA BASE ==================== */
+.stream-archive {
+    padding: 2rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    color: #ff5500;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 1rem;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff5500, transparent);
+    }
+  }
+  
+  /* ==================== 2. GRID DE STREAMS ==================== */
+  .archive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* ==================== 3. MEDIA QUERIES ==================== */
+  
+  /* TABLET (768px) */
+  @media (min-width: 768px) {
+    .stream-archive {
+      padding: 3rem 2rem;
+    }
+  
+    .archive-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+    }
+  }
+  
+  /* DESKTOP (1024px) */
+  @media (min-width: 1024px) {
+    .archive-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+  
+    .stream-archive {
+      padding: 4rem 2rem;
+    }
+  }

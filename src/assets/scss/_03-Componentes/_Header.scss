@@ -1,63 +1,71 @@
-/* ESTILOS PARA HEADER - GONDRA LIVE STREAMING */
+/* 
+ * ESTILOS PARA EL HEADER - GONDRA LIVE STREAMING
+ * 
+ * Estructura:
+ * 1. Estilos base (mobile-first)
+ * 2. Barra superior y contenedor
+ * 3. Logo y navegación
+ * 4. Búsqueda
+ * 5. Menú móvil
+ * 6. Media queries (tablet/desktop)
+ * 7. Animaciones
+ */
 
-/* ------------------------- */
-/* ESTRUCTURA BASE (MOBILE) */
-/* ------------------------- */
-
+/* ==================== 1. ESTRUCTURA BASE ==================== */
 .site-header {
-  position: fixed;
+  position: fixed; /* Header fijo en la parte superior */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  background-color: rgba(10, 10, 10, 0.9);
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  background-color: rgba(10, 10, 10, 0.9); /* Fondo semitransparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  transition: all 0.3s ease; /* Transición suave para efectos */
   
   /* Efecto al hacer scroll */
   &.scrolled {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra al hacer scroll */
     
     .header-container {
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1rem; /* Reduce padding al hacer scroll */
     }
   }
 }
 
-/* Barra superior con indicador de live */
+/* ==================== 2. BARRA SUPERIOR ==================== */
 .header-top-bar {
-  height: 3px;
-  background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
+  height: 3px; /* Altura de la barra */
+  background: linear-gradient(90deg, #0a0a0a, #1a1a1a); /* Gradiente por defecto */
   
-  /* Estado live */
+  /* Estado EN VIVO */
   &.live {
-    background: linear-gradient(90deg, #ff0000, #ff5500);
-    animation: pulse-bar 2s infinite;
+    background: linear-gradient(90deg, #ff0000, #ff5500); /* Gradiente rojo/naranja */
+    animation: pulse-bar 2s infinite; /* Animación de pulso */
   }
 }
 
-/* Contenedor principal */
+/* Contenedor principal del header */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0.8rem 1rem;
-  transition: all 0.3s ease;
+  max-width: 1400px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 0.8rem 1rem; /* Padding inicial (mobile) */
+  transition: all 0.3s ease; /* Transición para efectos */
 }
 
-/* Logo */
+/* ==================== 3. LOGO Y NAVEGACIÓN ==================== */
 .header-logo {
   display: flex;
   align-items: center;
-  z-index: 1001;
+  z-index: 1001; /* Por encima del menú móvil */
   
   .logo-image {
-    height: 36px;
+    height: 36px; /* Tamaño inicial (mobile) */
     width: auto;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transición para hover/resize */
   }
 }
 
@@ -65,104 +73,109 @@
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1rem; /* Espacio entre elementos */
 }
 
-/* Links de navegación */
+/* Lista de enlaces */
 .nav-links {
   display: flex;
-  gap: 1rem;
+  gap: 1rem; /* Espacio entre enlaces */
 }
 
+/* Estilos base para enlaces */
 .nav-link {
-  color: #cccccc;
+  color: #cccccc; /* Color texto normal */
   text-decoration: none;
   font-weight: 500;
-  font-size: 14px;
-  transition: all 0.3s ease;
+  font-size: 14px; /* Tamaño base (mobile) */
+  transition: all 0.3s ease; /* Transición suave */
   padding: 0.5rem 0;
-  position: relative;
+  position: relative; /* Para el subrayado animado */
   
+  /* Efecto hover */
   &:hover {
-    color: #ffffff;
+    color: #ffffff; /* Color texto hover */
     
+    /* Subrayado animado */
     &::after {
       width: 100%;
     }
   }
   
-  /* Subrayado animado */
+  /* Subrayado animado (pseudo-elemento) */
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 0; /* Inicialmente invisible */
     height: 2px;
-    background-color: #ff5500;
-    transition: width 0.3s ease;
+    background-color: #ff5500; /* Color naranja */
+    transition: width 0.3s ease; /* Animación de ancho */
   }
   
-  /* Estilo especial para link de live */
+  /* Estilo especial para link EN VIVO */
   &.live-link {
-    color: #ff5500;
-    font-weight: 600;
+    color: #ff5500; /* Color naranja */
+    font-weight: 600; /* Texto más grueso */
     
     &:hover {
-      color: #ff0000;
+      color: #ff0000; /* Rojo al hacer hover */
     }
   }
 }
 
-/* Contenedor de búsqueda */
+/* ==================== 4. BÚSQUEDA ==================== */
 .search-container {
-  flex: 1;
-  max-width: 400px;
-  margin: 0 1rem;
+  flex: 1; /* Ocupa espacio disponible */
+  max-width: 400px; /* Ancho máximo */
+  margin: 0 1rem; /* Margen lateral */
   display: none; /* Oculto en mobile por defecto */
 }
 
 .search-input {
   width: 100%;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 85, 0, 0.5);
-  background: rgba(20, 20, 20, 0.8);
-  color: #ffffff;
+  border-radius: 20px; /* Bordes redondeados */
+  border: 1px solid rgba(255, 85, 0, 0.5); /* Borde naranja semitransparente */
+  background: rgba(20, 20, 20, 0.8); /* Fondo oscuro semitransparente */
+  color: #ffffff; /* Texto blanco */
   font-size: 14px;
   
+  /* Estilo al enfocar */
   &:focus {
-    outline: none;
-    border-color: #ff5500;
-    box-shadow: 0 0 0 2px rgba(255, 85, 0, 0.2);
+    outline: none; /* Elimina outline por defecto */
+    border-color: #ff5500; /* Borde naranja sólido */
+    box-shadow: 0 0 0 2px rgba(255, 85, 0, 0.2); /* Sombra suave */
   }
 }
 
-/* Botón menú móvil */
+/* ==================== 5. MENÚ MÓVIL ==================== */
 .menu-toggle {
-  display: none;
+  display: none; /* Oculto por defecto (visible solo en mobile) */
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  z-index: 1001;
+  z-index: 1001; /* Por encima de otros elementos */
   
+  /* Líneas del menú hamburguesa */
   .menu-line {
     display: block;
     width: 24px;
     height: 2px;
-    background-color: #ff5500;
+    background-color: #ff5500; /* Color naranja */
     margin: 5px 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transición para animación */
   }
   
-  /* Estado abierto */
+  /* Estado abierto (transforma en X) */
   &.open {
     .menu-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
     .menu-line:nth-child(2) {
-      opacity: 0;
+      opacity: 0; /* Línea central invisible */
     }
     .menu-line:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
@@ -170,56 +183,52 @@
   }
 }
 
-/* ------------------------- */
+/* ==================== 6. MEDIA QUERIES ==================== */
+
 /* TABLET (768px) */
-/* ------------------------- */
 @media (min-width: 768px) {
   .header-container {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.5rem; /* Aumenta padding */
   }
   
   .header-logo .logo-image {
-    height: 42px;
+    height: 42px; /* Logo más grande */
   }
   
   .nav-links {
-    gap: 1.5rem;
+    gap: 1.5rem; /* Más espacio entre enlaces */
   }
   
   .nav-link {
-    font-size: 15px;
+    font-size: 15px; /* Texto más grande */
   }
   
   .search-container {
-    display: block;
+    display: block; /* Muestra la búsqueda */
   }
 }
 
-/* ------------------------- */
 /* ESCRITORIO (1024px) */
-/* ------------------------- */
 @media (min-width: 1024px) {
   .header-container {
-    padding: 1rem 2rem;
+    padding: 1rem 2rem; /* Padding aún mayor */
   }
   
   .header-logo .logo-image {
-    height: 48px;
+    height: 48px; /* Logo más grande */
   }
   
   .nav-links {
-    gap: 2rem;
+    gap: 2rem; /* Máximo espacio entre enlaces */
   }
   
   .nav-link {
-    font-size: 16px;
+    font-size: 16px; /* Tamaño final de texto */
     padding: 0.5rem 0;
   }
 }
 
-/* ------------------------- */
-/* MENÚ MÓVIL (max 1023px) */
-/* ------------------------- */
+/* MENÚ MÓVIL (hasta 1023px) */
 @media (max-width: 1023px) {
   .main-nav {
     position: fixed;
@@ -227,42 +236,41 @@
     right: 0;
     width: 80%;
     max-width: 300px;
-    height: 100vh;
-    background-color: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
+    height: 100vh; /* Altura completa */
+    background-color: rgba(10, 10, 10, 0.95); /* Fondo semitransparente */
+    backdrop-filter: blur(10px); /* Mayor desenfoque */
     flex-direction: column;
     justify-content: flex-start;
-    padding: 5rem 2rem 2rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    padding: 5rem 2rem 2rem; /* Padding para el contenido */
+    transform: translateX(100%); /* Oculta inicialmente */
+    transition: transform 0.3s ease; /* Animación suave */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3); /* Sombra lateral */
     
     /* Estado abierto */
     &.open {
-      transform: translateX(0);
+      transform: translateX(0); /* Muestra el menú */
     }
     
     .nav-links {
-      flex-direction: column;
+      flex-direction: column; /* Enlaces en columna */
       width: 100%;
-      gap: 1.5rem;
+      gap: 1.5rem; /* Espacio vertical entre enlaces */
       margin-bottom: 2rem;
     }
     
     .nav-link {
-      font-size: 18px;
+      font-size: 18px; /* Texto más grande en móvil */
       padding: 0.5rem 0;
     }
   }
   
+  /* Muestra el botón de menú solo en mobile */
   .menu-toggle {
     display: block;
   }
 }
 
-/* ------------------------- */
-/* ANIMACIÓN PULSO LIVE */
-/* ------------------------- */
+/* ==================== 7. ANIMACIONES ==================== */
 @keyframes pulse-bar {
   0% { opacity: 0.8; }
   50% { opacity: 1; }

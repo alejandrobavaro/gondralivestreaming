@@ -1,36 +1,86 @@
+/* ESTILOS PARA COMPONENTE UPCOMING-STREAMS */
+
+/* ------------------------- */
+/* ESTRUCTURA BASE (MOBILE) */
+/* ------------------------- */
+
 .upcoming-streams {
     width: 100%;
-    padding: 2rem 0;
-    background-color: #0a192f;
-    color: #e6f1ff;
-  
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    
+    /* Título de sección */
     .section-title {
-      color: #64ffda;
-      font-size: 1.8rem;
+      color: #ff5500; /* Color naranja para títulos */
+      font-size: 1.5rem;
       margin-bottom: 1.5rem;
       text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: 0.5rem;
+      
+      /* Línea decorativa bajo el título */
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 2px;
+        background-color: #ff5500;
+      }
     }
-  
+    
+    /* Grid de streams */
     .streams-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: 1fr; /* 1 columna en móvil */
       gap: 1.5rem;
     }
   }
   
-  /* Tablet (768px) */
+  /* ------------------------- */
+  /* TABLET (768px) */
+  /* ------------------------- */
   @media (min-width: 768px) {
     .upcoming-streams {
-      padding: 2.5rem 0;
+      padding: 1.5rem;
+      
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        
+        &::after {
+          width: 100px;
+        }
+      }
+      
+      .streams-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+        gap: 2rem;
+      }
     }
   }
   
-  /* Desktop (1024px) */
+  /* ------------------------- */
+  /* ESCRITORIO (1024px) */
+  /* ------------------------- */
   @media (min-width: 1024px) {
     .upcoming-streams {
-      padding: 3rem 0;
+      padding: 2rem;
+      
+      .section-title {
+        font-size: 2rem;
+        
+        &::after {
+          width: 120px;
+        }
+      }
+      
+      .streams-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+        gap: 2.5rem;
+      }
     }
   }
-  

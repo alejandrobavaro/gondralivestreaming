@@ -1,39 +1,101 @@
-// Importación de React, necesario para definir componentes en React
 import React from 'react';
-// Importación de la función format de date-fns para formatear fechas
 import { format } from 'date-fns';
-// Importación del locale español de date-fns para formatear fechas en español
 import { es } from 'date-fns/locale';
+import PropTypes from 'prop-types';
+import "../assets/scss/_03-Componentes/_MainNovedades.scss";
 
-// Definición del componente funcional MainNovedades
-const MainNovedades = ({ items, title, type = 'streams' }) => {
-  // Renderizado del componente
+/**
+ * COMPONENTE MAIN NOVEDADES - Muestra novedades y próximos eventos
+ * 
+ * Funcionalidades:
+ * 1. Muestra listado de streams o noticias
+ * 2. Formatea fechas en español
+ * 3. Diseño responsive (1-3 columnas)
+ * 4. Integración con sistema de recordatorios
+ * 
+ * Props:
+ * - items: Array de objetos con las novedades
+ * - title: Título de la sección
+ * - type: Tipo de contenido ('streams' o 'news')
+ */
+const MainNovedades = ({ items = [], title = 'Novedades', type = 'streams' }) => {
+  // Datos de ejemplo si no se proporcionan items
+  const demoItems = type === 'streams' ? [
+    {
+      id: 1,
+      title: "Concierto Especial de Fin de Año",
+      date: "2023-12-31T21:00:00",
+      description: "Evento exclusivo con invitados sorpresa"
+    },
+    {
+      id: 2,
+      title: "Sesión de Preguntas y Respuestas",
+      date: "2024-01-15T19:00:00",
+      description: "Envía tus preguntas para que respondamos en vivo"
+    },
+    {
+      id: 3,
+      title: "Tutorial: Producción Musical Avanzada",
+      date: "2024-02-05T18:00:00",
+      description: "Aprende técnicas profesionales de producción"
+    }
+  ] : [
+    {
+      id: 1,
+      title: "Nuevo álbum en producción",
+      date: "2023-11-20T00:00:00",
+      description: "Estamos trabajando en nuevo material musical"
+    },
+    {
+      id: 2,
+      title: "Gira 2024 confirmada",
+      date: "2023-11-15T00:00:00",
+      description: "Próximamente anunciaremos fechas y ciudades"
+    }
+  ];
+
+  // Usamos los items proporcionados o los de demo
+  const itemsToShow = items.length > 0 ? items : demoItems;
+
   return (
-    <div className={`main-novedades ${type}-version`}>
-      {/* Título de la sección */}
+    <section className="main-novedades">
       <h2 className="section-title">{title}</h2>
-      {/* Grid de novedades */}
+      
       <div className="novedades-grid">
-        {items.map(item => (
-          <div key={item.id} className="novedad-item stream-item">
-            {/* Fecha del stream formateada */}
-            <div className="stream-date">
-              {format(new Date(item.date), 'PPP', { locale: es })}
+        {itemsToShow.map(item => (
+          <article key={item.id} className={`novedad-item ${type}-item`}>
+            <div className="item-date">
+              {format(new Date(item.date), "EEEE d 'de' MMMM, yyyy", { locale: es })}
             </div>
-            {/* Título del stream */}
-            <h3>{item.title}</h3>
-            {/* Botón de recordatorio, solo se muestra si el tipo es 'streams' */}
+            <h3 className="item-title">{item.title}</h3>
+            <p className="item-description">{item.description}</p>
+            
             {type === 'streams' && (
-              <button className="stream-reminder">
-                ⏰ Recordar
-              </button>
+              <div className="item-actions">
+                <button className="reminder-btn">
+                  ⏰ Recordar
+                </button>
+                <span className="live-badge upcoming">PRÓXIMAMENTE</span>
+              </div>
             )}
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-// Exportación del componente MainNovedades para su uso en otras partes de la aplicación
+MainNovedades.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      description: PropTypes.string
+    })
+  ),
+  title: PropTypes.string,
+  type: PropTypes.oneOf(['streams', 'news'])
+};
+
 export default MainNovedades;

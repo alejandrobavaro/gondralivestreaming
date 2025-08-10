@@ -11,6 +11,7 @@ import React from 'react';
 const MainBanner = ({ title, subtitle, isStreaming }) => {
   return (
     <div className="main-banner streaming-banner">
+     <img src="/img/02-logos/logogondralivestreaming4.png" alt="" />
       <div className="banner-content">
         <h1>{title}</h1>
         <p>{subtitle}</p>
