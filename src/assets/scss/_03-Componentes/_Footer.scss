@@ -1,0 +1,285 @@
+/* ESTILOS PARA FOOTER - GONDRA LIVE STREAMING */
+
+/* ------------------------- */
+/* ESTRUCTURA BASE (MOBILE) */
+/* ------------------------- */
+
+.site-footer {
+  background-color: rgba(10, 10, 10, 0.95);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 85, 0, 0.3);
+  padding: 1.5rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(5px);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo y descripción */
+.footer-brand {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  
+  .footer-logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+    
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  
+  .brand-description {
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+/* Secciones de enlaces */
+.footer-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  text-align: center;
+  
+  .section-heading {
+    color: #ff5500;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 85, 0, 0.3);
+  }
+}
+
+/* Lista de enlaces */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  
+  .footer-link {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #ff5500;
+    }
+  }
+}
+
+/* Información de contacto */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  
+  .contact-item {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #ff5500;
+      
+      i {
+        color: #ff5500;
+      }
+    }
+    
+    i {
+      color: #ff5500;
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Redes sociales */
+.footer-social {
+  margin: 2rem 0;
+  text-align: center;
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-icon {
+    color: #ffffff;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 85, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &:hover {
+      background: rgba(255, 85, 0, 0.3);
+      transform: translateY(-3px);
+      
+      .social-tooltip {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    i {
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover i {
+      transform: scale(1.2);
+    }
+  }
+  
+  .social-tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: rgba(10, 10, 10, 0.9);
+    color: #ff5500;
+    padding: 0.2rem 0.8rem;
+    border-radius: 4px;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 85, 0, 0.3);
+  }
+}
+
+/* Copyright */
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 85, 0, 0.1);
+  
+  .copyright {
+    color: #888888;
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .credits {
+    color: #ff5500;
+    font-size: 12px;
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* ------------------------- */
+/* TABLET (768px) */
+/* ------------------------- */
+@media (min-width: 768px) {
+  .footer-brand {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    
+    .brand-description {
+      font-size: 15px;
+      max-width: 300px;
+    }
+  }
+  
+  .footer-sections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  
+  .footer-section {
+    text-align: left;
+  }
+  
+  .footer-links .footer-link,
+  .contact-info .contact-item {
+    font-size: 15px;
+    justify-content: flex-start;
+  }
+  
+  .footer-social .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
+
+/* ------------------------- */
+/* ESCRITORIO (1024px) */
+/* ------------------------- */
+@media (min-width: 1024px) {
+  .site-footer {
+    padding: 2rem 1.5rem;
+  }
+  
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+  
+  .footer-brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 0;
+    
+    .brand-logo {
+      height: 50px;
+    }
+  }
+  
+  .footer-sections {
+    margin-bottom: 0;
+  }
+  
+  .footer-social {
+    grid-column: span 2;
+    margin: 1.5rem 0 0;
+  }
+  
+  .footer-bottom {
+    grid-column: span 2;
+  }
+}

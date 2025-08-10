@@ -1,0 +1,36 @@
+.upcoming-streams {
+    width: 100%;
+    padding: 2rem 0;
+    background-color: #0a192f;
+    color: #e6f1ff;
+  
+    .section-title {
+      color: #64ffda;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  
+    .streams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+  
+  /* Tablet (768px) */
+  @media (min-width: 768px) {
+    .upcoming-streams {
+      padding: 2.5rem 0;
+    }
+  }
+  
+  /* Desktop (1024px) */
+  @media (min-width: 1024px) {
+    .upcoming-streams {
+      padding: 3rem 0;
+    }
+  }
+  
